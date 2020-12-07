@@ -21,7 +21,7 @@ export default function Products(props) {
                             style={{margin:"0 0.2rem"}} className="product_text">View Details</Link>
                     </div>
                     
-                    <button className="product_button">Add to Cart</button>
+                    <button className="product_button" onClick={(e)=>props.handleAddToCart(e,product)}>Add to Cart</button>
                     
 
                 </div>
