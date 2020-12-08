@@ -1,12 +1,19 @@
-import React from 'react';
+import React,{Component} from 'react';
 import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
+import { fetchProducts } from '../actions/productActions';
+//import { addToCart } from '../actions/cartActions';
 
-export default function Products(props) {
+class Products extends Component {
+    UNSAFE_componentWillMount(){
+        this.props.fetchProducts();
+    }
+    render(){
     return (
         <div className="container">
-            {props.products.length > 0 ?
+            {this.props.products && this.props.products.length > 0 ?
             <div className="row">
-            { props.products.map((product)=>{
+            { this.props.products.map((product)=>{
             return(
               <div className="col-md-4" key={product.asin} style={{marginBottom:"2rem"}}> 
                 <div className="product_box">
@@ -20,8 +27,8 @@ export default function Products(props) {
                                 }}  
                             style={{margin:"0 0.2rem"}} className="product_text">View Details</Link>
                     </div>
-                    
-                    <button className="product_button" onClick={(e)=>props.handleAddToCart(e,product)}>Add to Cart</button>
+                    {}
+                    <button className="product_button" onClick={(e)=>this.props.addToCart(e,product)}>Add to Cart</button>
                     
 
                 </div>
@@ -34,4 +41,22 @@ export default function Products(props) {
         }
         </div>
     )
+    }
 }
+const mapStateToProps= (state)=>{
+   // console.log(state);
+    //console.log(state.products);
+    //console.log(state.products.items);
+    //console.log(state.products.items.products);
+    return{
+        products: state.products.items.products
+    }
+    
+};
+const mapDispatchToProps=(dispatch)=>{
+    return{
+    fetchProducts:()=>dispatch(fetchProducts()),
+    //addToCart:(items,newItem)=>dispatch(addToCart(items, newItem))
+    }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(Products);

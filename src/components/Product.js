@@ -35,7 +35,6 @@ export default class Product extends Component {
                         <img src={this.state.activeProduct.main_image} alt={this.state.activeProduct.title} className="active-product_img"/>
                         <h3 className="active-product_title">{this.state.activeProduct.title}</h3>
                         <h4 className="product_subtitle">{this.state.activeProduct.description}</h4>
-                        <button className="active-product_button">Add to Cart</button>
                      </div>
                      :
                      <div className='active-product_title'>Loading Product....</div> 
