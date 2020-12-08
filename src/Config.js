@@ -1,3 +1,4 @@
 const API_KEY='576053093bmsh3d12357c8ec0c77p195d4bjsn808c494cd275';
+//const STRIPE_KEY='pk_test_51Hw2rtFDPRsaKgnNQuAtcqwW6EMNWhPEK7hCHtELqiexJOgjCAieME6sovjAfZOKuoJ76zz6FjaBegP89CZXuAHk00G0l5yEdK';
 
 module.exports={API_KEY};

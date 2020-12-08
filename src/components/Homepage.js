@@ -41,11 +41,13 @@ class Homepage extends Component {
     this.listProducts();
   }
   listProducts=()=>{
+    console.log("I am herere");
     this.setState(state=>{
       if(state.sort !== ''){
         state.products.sort((a,b)=>(state.sort==='highest')?(a.price.current_price < b.price.current_price ? 1: -1):
                                                           (a.price.current_price > b.price.current_price ? 1:-1 ))
       }
+      console.log(state);
       return{filteredProducts: state.products};
     })
   };
@@ -131,7 +133,7 @@ class Homepage extends Component {
       products: data.products,
       filteredProducts: data.products
     });
-    //console.log(this.state.products);
+    console.log(this.state.products);
     if(localStorage.getItem('cartItems')){
       this.setState({cartItems: JSON.parse(localStorage.getItem('cartItems'))});
     }
